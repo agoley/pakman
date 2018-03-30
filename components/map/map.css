@@ -1,0 +1,15 @@
+
+
+#map {
+    position: absolute;
+    height: 300px;
+    width: 600px;
+    margin: 0 auto;
+    left: calc(50% - 300px);
+    top: 200px;
+}
+
+.wall {
+    position: absolute;
+    border: none;
+}

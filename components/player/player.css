@@ -1,0 +1,76 @@
+#player {
+    position: absolute;
+}
+
+.player-top-half {
+    height: 10px;
+    width: 20px;
+    background: #333;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    -webkit-transition: transform .2s;
+    transition: transform .2s;
+}
+
+.player-bottom-half {
+    height: 10px;
+    width: 20px;
+    position: absolute;
+    background: #333;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    -webkit-transition: transform .2s;
+    transition: transform .2s;
+}
+
+.player-top-half.rotated.right {
+    transform: rotate(-20deg);
+}
+
+.player-bottom-half.rotated.right {
+    transform: rotate(20deg);
+}
+
+.player-top-half.rotated.left {
+    transform: rotate(20deg);
+}
+
+.player-bottom-half.rotated.left {
+    transform: rotate(-20deg);
+}
+
+.player-top-half.up, .player-top-half.down {
+    display: inline-block;
+    height: 20px !important;
+    width: 10px !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.player-bottom-half.up, .player-bottom-half.down {
+    display: inline-block;
+    height: 20px !important;
+    width: 10px !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 20px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 20px !important;
+} 
+
+.player-top-half.rotated.up {
+    transform: rotate(20deg);
+}
+
+.player-bottom-half.rotated.up {
+    transform: rotate(-20deg);
+}
+
+.player-top-half.rotated.down {
+    transform: rotate(-20deg);
+}
+
+.player-bottom-half.rotated.down {
+    transform: rotate(20deg);
+}
