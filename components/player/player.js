@@ -5,8 +5,6 @@ function Player() {
     var size = 20;
     var animationLoop = null;
 
-    this.constructor = function () { }
-
     this.generateDiv = function () {
         var div = document.createElement("div");
         div.id = "player";
@@ -38,7 +36,7 @@ function Player() {
 
             if (direction === 'UP') {
                 var nextTop = framework.getElementPos(node, 'top') + size;
-                if (this.isValidNextMove(framework.getElementPos(node, 'left'), nextTop)) {
+                if (framework.isValidNextMove(framework.getElementPos(node, 'left'), nextTop, size, size)) {
 
                     // Move the player up one unit.
                     node.style.top = nextTop + 'px'
@@ -49,7 +47,7 @@ function Player() {
 
             if (direction === 'DOWN') {
                 var nextTop = framework.getElementPos(node, 'top') - size;
-                if (this.isValidNextMove(framework.getElementPos(node, 'left'), nextTop)) {
+                if (framework.isValidNextMove(framework.getElementPos(node, 'left'), nextTop, size, size)) {
 
                     // Move the player down one unit.
                     node.style.top = nextTop + 'px'
@@ -60,10 +58,10 @@ function Player() {
 
             if (direction === 'RIGHT') {
                 var nextLeft = framework.getElementPos(node, 'left') + size;
-                if (nextLeft > 600) {
+                if (nextLeft > 605) {
                     nextLeft = 5;
                 }
-                if (this.isValidNextMove(nextLeft, framework.getElementPos(node, 'top'))) {
+                if (framework.isValidNextMove(nextLeft, framework.getElementPos(node, 'top'), size, size)) {
 
                     // Move the player down one unit.
                     node.style.left = nextLeft + 'px'
@@ -77,7 +75,7 @@ function Player() {
                 if (nextLeft < 0) {
                     nextLeft = 605;
                 }
-                if (this.isValidNextMove(nextLeft, framework.getElementPos(node, 'top'))) {
+                if (framework.isValidNextMove(nextLeft, framework.getElementPos(node, 'top'), size, size)) {
 
                     // Move the player down one unit.
                     node.style.left = nextLeft + 'px'
@@ -96,7 +94,7 @@ function Player() {
 
         }.bind(this);
 
-        animationLoop = setInterval(frame, 200);
+        animationLoop = setInterval(frame, 300);
     }
 
     this.setDirection = function (direction) {
@@ -114,23 +112,6 @@ function Player() {
         this.getNode().children[1].classList.add(direction.toLowerCase());
     }
 
-    /**
-     * Validate a player coordinate.
-     * @returns {boolean}
-     */
-    this.isValidNextMove = function (x, y) {
-        var walls = document.getElementsByClassName('wall');
-
-        for (var i = 0; i < walls.length; i++) {
-
-            if (framework.collides(x, y, size, size, walls[i])) {
-                // Player collides with a wall at coordinates (x,y), this is not a valid move.
-                return false;
-            }
-        }
-        return true;
-    }
-
     window.onkeyup = function (e) {
         var key = e.keyCode ? e.keyCode : e.which;
 
@@ -145,5 +126,4 @@ function Player() {
         }
     }.bind(this)
 
-    this.constructor();
 }
